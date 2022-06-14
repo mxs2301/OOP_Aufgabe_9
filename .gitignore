@@ -1,0 +1,5 @@
+.ninja_deps
+.ninja_log
+CMakeCache.txt
+Code
+CMakeFiles/
