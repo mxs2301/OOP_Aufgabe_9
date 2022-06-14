@@ -4,4 +4,4 @@
 
 * Aufgabe lesen
 * Vorlesung nachlesen
-
+* Listen abstreichen
