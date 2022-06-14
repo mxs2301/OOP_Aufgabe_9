@@ -1,5 +1,7 @@
 #include <cassert>
 #include <stdio.h>
+#include <unordered_map>
+#include <string>
 
 class Vehicle {
 
@@ -71,10 +73,18 @@ public:
   Bicycle() : Vehicle(2, 20, 0, 0) {}
 };
 
+void Race(){
+	std::unordered_map<std::string, Vehicle> table;
+	RacingCar Porsche;
+	table.emplace("Porsche", Porsche);
+	printf("%d\n",table.at("Porsche").getMaxSpeed());
+}
+
+
 int main() {
 
   printf("starting\n");
-
+  Race();
   Ambulance ambulance;
   assert(ambulance.getWheels() == 4);
   assert(ambulance.getMaxSpeed() == 140);
