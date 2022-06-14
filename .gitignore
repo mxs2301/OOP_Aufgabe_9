@@ -3,3 +3,5 @@
 CMakeCache.txt
 Code
 CMakeFiles/
+build.ninja
+cmake_install.cmake
