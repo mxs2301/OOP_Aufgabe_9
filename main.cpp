@@ -34,8 +34,7 @@ public:
 	}
 
 	void move(int time){
-		if(time == 60)
-			position = position + currentSpeed;
+			position = position + (currentSpeed * time)/60;
 	}
 
 	Vehicle(int wheels, int maxSpeed, int currentSpeed, int position):
@@ -47,9 +46,9 @@ public:
 };
 
 class Car : public Vehicle{
-public:
+protected:
+	Car(int maxSpeed): Vehicle(4, maxSpeed, 0, 0){}
 	Car(): Vehicle(4, 140, 0, 0){}
-	Car(): 
 };
 
 class Ambulance : public Car{
@@ -57,7 +56,7 @@ private:
 	bool BlueLightOn = false;
 
 public:
-	Ambulance():Car(){}
+	Ambulance():Car(140){}
 
 	bool isBlueLightOn(){
 		return BlueLightOn;
@@ -71,11 +70,27 @@ public:
 	}
 };
 
+class PassengerCar : public Car{
+
+public:
+	PassengerCar():Car(140){}
+};
+
+class RacingCar : public Car{
+public:
+	RacingCar():Car(200){}
+};
+
+class Bicycle : public Vehicle{
+public:
+	Bicycle():Vehicle(2, 20, 0, 0){}
+};
 
 int main(){
 
 
   printf("starting\n");
+  
   Ambulance ambulance;
   assert(ambulance.getWheels() == 4);
   assert(ambulance.getMaxSpeed() == 140);
@@ -91,7 +106,28 @@ int main(){
   assert(!ambulance.isBlueLightOn());
   ambulance.switchBlueLight();
   assert(ambulance.isBlueLightOn());
-
+  printf("Test Ambulance\t...passed\n");
+	PassengerCar Honda_Civic;
+	assert(Honda_Civic.getWheels() == 4);
+	assert(Honda_Civic.getMaxSpeed() == 140);
+	Honda_Civic.setSpeed(120);
+	Honda_Civic.move(50);
+	assert(Honda_Civic.getPosition() == 100);	
+	printf("Test Passenger Car\t...passed\n");
+	RacingCar Corolla_GR;
+	assert(Corolla_GR.getMaxSpeed()>Honda_Civic.getMaxSpeed());
+	Corolla_GR.setSpeed(300);
+	Honda_Civic.setSpeed(300);
+	assert(Corolla_GR.getMaxSpeed()>Honda_Civic.getMaxSpeed());
+	printf("Test Racing Car\t...passed\n");
+	Bicycle Rad;
+	assert(Rad.getWheels() == 2 && Rad.getWheels()< Honda_Civic.getWheels());
+	assert(Rad.getMaxSpeed() < Corolla_GR.getMaxSpeed() && Rad.getMaxSpeed() < Honda_Civic.getMaxSpeed());
+	Rad.setSpeed(Rad.getMaxSpeed());
+	Corolla_GR.move(60);
+	Rad.move(180);
+	assert(Rad.getPosition()<Corolla_GR.getPosition());
+	printf("Test Bicycle\t...passed\n");
   printf("Finished\n");
   return 0;
 }
