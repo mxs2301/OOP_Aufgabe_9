@@ -9,7 +9,7 @@ protected:
   int wheels;
   int maxSpeed;
   int currentSpeed;
-  int position;
+  double position;
 
 public:
   int getWheels() { return wheels; }
@@ -27,7 +27,7 @@ public:
       currentSpeed = maxSpeed;
   }
 
-  void move(int time) { position = position + (currentSpeed * time) / 60; }
+  void move(double time) { position = position + (currentSpeed * time) / 60; }
 
   Vehicle(int wheels, int maxSpeed, int currentSpeed, int position)
       : wheels(wheels), maxSpeed(maxSpeed), currentSpeed(currentSpeed),
@@ -61,6 +61,7 @@ class PassengerCar : public Car {
 
 public:
   PassengerCar() : Car(140) {}
+  PassengerCar(int tempo): Car(tempo){}
 };
 
 class RacingCar : public Car {
@@ -75,9 +76,32 @@ public:
 
 void Race(){
 	std::unordered_map<std::string, Vehicle> table;
-	RacingCar Porsche;
-	table.emplace("Porsche", Porsche);
-	printf("%d\n",table.at("Porsche").getMaxSpeed());
+	Bicycle Guy;
+	PassengerCar VW(150);
+	RacingCar Rimac;
+	Ambulance ambulance;
+	table.emplace("RacingCar", Rimac);
+	table.emplace("Bicycle", Guy);
+	table.emplace("Ambulance",ambulance);
+	table.emplace("PassengerCar", VW);
+	table.at("Bicycle").setSpeed(20);
+	table.at("PassengerCar").setSpeed(150);
+	table.at("RacingCar").setSpeed(200);
+	table.at("Ambulance").setSpeed(80);
+	table.at("Bicycle").move(240);
+	printf("%d\n", table.at("PassengerCar").getCurrentSpeed());
+	for(int i = 0; i<4; i++){
+		table.at("Bicycle").move(15);
+		table.at("PassengerCar").move(15);
+		table.at("Ambulance").move(15);
+		table.at("RacingCar").move(15);
+		printf("position of ambulance: %d\n", table.at("Ambulance").getPosition());
+		printf("position of bicycle: %d\n", table.at("Bicycle").getPosition());
+		printf("position of passenger car: %d\n", table.at("PassengerCar").getPosition());
+		printf("position of racing car: %d\n\n", table.at("RacingCar").getPosition());
+	}
+	
+
 }
 
 
