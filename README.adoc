@@ -2,6 +2,7 @@
 
 == TO-DO
 
-* [ ] Klassen Bycicle, PassengerCar und RaceingCar erstellen
-* [ ] Testsfür Bicycle, PassengerCar und RaceingCar erstellen
-* [ ] Zeilen abschätzen
+* [x] Klassen Bycicle, PassengerCar und RaceingCar erstellen
+* [x] Testsfür Bicycle, PassengerCar und RaceingCar erstellen
+* [x] Zeilen abschätzen
+* [ ] In Maps einlesen
