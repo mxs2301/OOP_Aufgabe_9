@@ -5,3 +5,4 @@ Code
 CMakeFiles/
 build.ninja
 cmake_install.cmake
+run.sh
