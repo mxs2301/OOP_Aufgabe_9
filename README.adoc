@@ -6,4 +6,4 @@
 * [x] Testsfür Bicycle, PassengerCar und RaceingCar erstellen
 * [x] Zeilen abschätzen
 * [x] In Maps einlesen
-* <s>+++DONE+++</s>
+* +++<s>DONE</s>+++
