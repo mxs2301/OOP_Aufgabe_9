@@ -5,4 +5,5 @@
 * [x] Klassen Bycicle, PassengerCar und RaceingCar erstellen
 * [x] Testsfür Bicycle, PassengerCar und RaceingCar erstellen
 * [x] Zeilen abschätzen
-* [ ] In Maps einlesen
+* [x] In Maps einlesen
+* <s>+++DONE+++</s>
